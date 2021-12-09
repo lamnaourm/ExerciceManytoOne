@@ -33,8 +33,8 @@ create table if not exists Lecon (
     num_voiture int,
     date_lecon DATETIME,
     constraint fk_moniteur_lecon FOREIGN KEY (id_moniteur) REFERENCES moniteur(id_moniteur),
-    constraint fk_eleve_lecon FOREIGN KEY (id_eleve) REFERENCES moniteur(id_eleve),
-    constraint fk_voiture_lecon FOREIGN KEY (num_voiture) REFERENCES moniteur(num_voiture)
+    constraint fk_eleve_lecon FOREIGN KEY (id_eleve) REFERENCES eleve(id_eleve),
+    constraint fk_voiture_lecon FOREIGN KEY (num_voiture) REFERENCES voiture(num_voiture)
 );
 
 insert into moniteur values (null, 'Rémy','Beauregard','1977-6-12','H');
