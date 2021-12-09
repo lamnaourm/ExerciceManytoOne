@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table
+@NamedQuery(name="mq1",query="from Moniteur")
 public class Moniteur {
 
 	@Id
@@ -34,7 +36,7 @@ public class Moniteur {
 	@Column
 	private String sexe;
 	
-	@OneToMany(mappedBy="moniteur", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="moniteur", fetch=FetchType.EAGER)
 	private List<Lecon> lecons;
 	
 	public int getId() {

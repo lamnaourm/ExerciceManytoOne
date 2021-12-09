@@ -9,15 +9,16 @@ import com.ismo.dao.IDAO;
 import com.ismo.models.Eleve;
 import com.ismo.models.Lecon;
 import com.ismo.models.Moniteur;
+import com.ismo.models.Voiture;
 import com.ismo.utils.HibernateUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		IDAO<Eleve> dao = DaoFactory.getDAO(DaoEnum.ELEVE);
+		IDAO<Moniteur> dao = DaoFactory.getDAO(DaoEnum.MONITEUR);
 		
-		
+		System.out.println(dao.getOne(1).getLecons().size());
 
 	}
 

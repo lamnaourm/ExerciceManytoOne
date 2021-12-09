@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ismo.models.Lecon;
+import com.ismo.models.Moniteur;
 import com.ismo.models.Voiture;
 import com.ismo.utils.HibernateUtils;
 
@@ -13,42 +14,55 @@ public class DaoVoiture implements IDAO<Voiture> {
 
 	@Override
 	public List<Voiture> getAll() {
-		// TODO Auto-generated method stub
 		Session s = HibernateUtils.getSessionFactory().getCurrentSession();
 		Transaction t = s.beginTransaction();
-			
-		List<Lecon> lecons = s.createQuery("From Lecon").list();
-		
-		for(Lecon m:lecons)
-			System.out.println(m);
-		
+		List<Voiture> voitures = s.createNamedQuery("vq1").list();
 		t.commit();
 		s.close();
-		return null;
+		return voitures;
 	}
 
 	@Override
 	public Voiture getOne(int code) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = HibernateUtils.getSessionFactory().getCurrentSession();
+		Transaction t = s.beginTransaction();
+		Voiture v = s.get(Voiture.class, code);
+		t.commit();
+		s.close();
+		return v;
 	}
 
 	@Override
 	public boolean save(Voiture obj) {
-		// TODO Auto-generated method stub
+		Session s = HibernateUtils.getSessionFactory().getCurrentSession();
+		Transaction t = s.beginTransaction();
+		
+		Integer res = (Integer) s.save(obj); 
+		
+		t.commit();
+		s.close();
+		if(res!=null)
+			return true;
 		return false;
 	}
 
 	@Override
 	public boolean update(Voiture obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Session s = HibernateUtils.getSessionFactory().getCurrentSession();
+		Transaction t = s.beginTransaction();
+		s.update(obj);
+		t.commit();
+		s.close();
+		return true;
 	}
 
 	@Override
 	public boolean delete(Voiture obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Session s = HibernateUtils.getSessionFactory().getCurrentSession();
+		Transaction t = s.beginTransaction();
+		s.delete(obj);
+		t.commit();
+		s.close();
+		return true;
 	}
-
 }

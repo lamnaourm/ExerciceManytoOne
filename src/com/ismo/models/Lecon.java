@@ -11,12 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table
+@NamedQuery(name="lq1",query="from Lecon")
 public class Lecon implements Serializable{
 
 	@Id
@@ -27,15 +29,15 @@ public class Lecon implements Serializable{
 	@Column(name="date_lecon")
 	private LocalDateTime date;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_eleve")
 	private Eleve eleve;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_moniteur")
 	private Moniteur moniteur;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="num_voiture")
 	private Voiture voiture;
 	

@@ -8,11 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table
+@NamedQuery(name="eq1",query="from Eleve")
 public class Eleve implements Serializable{
 
 	@Id

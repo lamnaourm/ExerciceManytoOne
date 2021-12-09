@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table
+@NamedQuery(name="vq1",query="from Voiture")
 public class Voiture {
 
 	@Id
